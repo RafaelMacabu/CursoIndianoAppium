@@ -13,6 +13,7 @@ public class AndroidUIAutomator {
         AppiumDriver driver = StartDriverSession.createAndroidDriver();
 
         WebElement element = driver.findElement(AppiumBy.androidUIAutomator("new UiSelector().text(\"Accessibility\")"));
+
 //        By element1 = AppiumBy.androidUIAutomator("new UiSelector().text(\"Accessibility\")");
 
         System.out.println(element.getText());
