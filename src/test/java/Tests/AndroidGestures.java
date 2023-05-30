@@ -4,11 +4,15 @@ import DriverUtils.StartDriverSession;
 import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
 
 import java.net.MalformedURLException;
+import java.time.Duration;
 
 public class AndroidGestures {
     public static void longClickGesture(AppiumDriver driver){
@@ -66,10 +70,24 @@ public class AndroidGestures {
     }
 
 
-    public static void main(String[] args) throws MalformedURLException {
-        AppiumDriver driver = StartDriverSession.createAndroidDriver();
+    public static void main(String[] args) throws MalformedURLException, InterruptedException {
+        AndroidDriver driver = StartDriverSession.createAndroidDriver();
         // longClickGesture(driver);
-        scrollGesture(driver);
+        swipeGesture(driver);
+        driver.pressKey(new KeyEvent().withKey(AndroidKey.HOME));
+        Thread.sleep(3000);
+        driver.lockDevice(Duration.ofSeconds(5));
+        driver.unlockDevice();
+
+        /*System.out.println(driver.isKeyboardShown());
+        driver.pressKey(new KeyEvent().withKey(AndroidKey.A));
+        driver.pressKey(new KeyEvent().withKey(AndroidKey.B));
+        driver.pressKey(new KeyEvent().withKey(AndroidKey.C));
+        driver.hideKeyboard();*/
+
+        //((AndroidDriver)driver).terminateApp("io.appium.android.apis");
+
+        System.out.println();
 
 
 

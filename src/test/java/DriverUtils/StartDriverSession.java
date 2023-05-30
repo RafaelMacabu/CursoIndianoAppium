@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 public class StartDriverSession {
 
-    public static AppiumDriver createAndroidDriver() throws MalformedURLException {
+    public static AndroidDriver createAndroidDriver() throws MalformedURLException {
         HashMap<String,String> caps = new HashMap<>();
         caps.put(MobileCapabilityType.PLATFORM_NAME,"android");
         caps.put(MobileCapabilityType.UDID,"291d97f2");
@@ -20,6 +20,8 @@ public class StartDriverSession {
         //caps.put(MobileCapabilityType.APP,"D:\\Software Estudos APPIUM\\apps\\ApiDemos-debug.apk");
         caps.put("appPackage","io.appium.android.apis");
         caps.put("appActivity",".ApiDemos t2949");
+        caps.put("unlockType","pattern");
+        caps.put("unlockKey","147896325");
         UiAutomator2Options options = new UiAutomator2Options(caps);
         /*DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability(MobileCapabilityType.PLATFORM_NAME,"android");
